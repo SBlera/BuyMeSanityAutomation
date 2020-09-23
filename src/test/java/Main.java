@@ -6,11 +6,11 @@ public class Main {
         Login.RunLoginNewUser();
         GiftProperties.SetGiftProperties();
         PickBusiness.SetGiftAndPrice();
-        SenderRecieverName.SetSenderReceiverNameInfo();
+        SenderReceiverName.SetSenderReceiverNameInfo();
         EventType.SetEventType();
         UploadFile.RunUploadFile();
-        SendNotification.SendNotificationUponPayment();
-        NotificaionType.SetNotificationTypeAndInfo();
+        Notifications.SendNotificationUponPayment();
+        Notifications.SetNotificationTypeAndInfo();
     }
 }
 

@@ -1,6 +1,8 @@
 public class GiftProperties extends BasePage{
 
     public static void SetGiftProperties() throws Exception {
+
+        //flow to get to set gift properties
         InsertXpathAndClickScreenShotOnFail("//span[.='סכום']");
         InsertClassAndClickAndScreenShotOnFail("active-result",3);
 
