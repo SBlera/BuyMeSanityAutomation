@@ -19,6 +19,7 @@ public class Report extends BasePage {
     private static ExtentReports extent;
     private static ExtentTest test;
 
+    //create extent report
     @BeforeClass
     public static void beforeClass() {
         ExtentSparkReporter htmlReporter = new ExtentSparkReporter("C:\\Users\\Lera\\Desktop\\BuyMeExtent.html");
@@ -28,14 +29,17 @@ public class Report extends BasePage {
 
     }
 
+
     @Test
     public void TestAssertUrl()  {
         try {
             StartAndNavigate.RunStartAndNavigate();
             String myURL = SingeltonDriver.getDriverInstance().getCurrentUrl();
             System.out.println(myURL);
+            //compare url received from xml file and the one that actually opened
             Assert.assertEquals(myURL, ProjectPropertiesReader.GetInstance().GetProjectUrl());
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestAssertUrl passed");
         } catch (WebDriverException n) {
             test.log(Status.FAIL, "TestAssertUrl failed " + n.getMessage());
@@ -47,17 +51,21 @@ public class Report extends BasePage {
     @Test
     public void TestAssertName()  {
         try {
+            //flow gets to insert name field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember714\"]/div/ul[1]/li[3]/a/span[2]");
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember688\"]/div/div[1]/div/div/div[3]/p/span");
             SingeltonDriver.getDriverInstance().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+            //insert name
             InsertIDAndKeysToSendScreenShotOnFail("ember1219", "Lera");
+            //read name
             WebElement SentName = SingeltonDriver.getDriverInstance().findElement(By.id("ember1219"));
             String GetName = SentName.getAttribute("value");
+            //compare values
             Assert.assertEquals("Lera", GetName);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestAssertName passed");
-
         } catch (Exception e) {
             test.log(Status.FAIL, "TestAssertName failed " + e.getMessage());
             System.out.println("TestAssertName failed" + e.getMessage());
@@ -67,16 +75,19 @@ public class Report extends BasePage {
     @Test
     public void TestAssertEmail()  {
         try {
+            //flow gets to insert email field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember714\"]/div/ul[1]/li[3]/a/span[2]");
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember688\"]/div/div[1]/div/div/div[3]/p/span");
             SingeltonDriver.getDriverInstance().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
             InsertIDAndKeysToSendScreenShotOnFail("ember1221", "lera.segal2+se39@gmail.com");
-
+            //read values
             WebElement SentEmail = SingeltonDriver.getDriverInstance().findElement(By.id("ember1221"));
             String GetEmail = SentEmail.getAttribute("value");
+            //compare values
             Assert.assertEquals("lera.segal2+se39@gmail.com", GetEmail);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestAssertEmail passed");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestAssertEmail failed " + e.getMessage());
@@ -87,16 +98,19 @@ public class Report extends BasePage {
     @Test
     public void TestAssertPass()  {
         try {
+            //flow gets to insert password field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember714\"]/div/ul[1]/li[3]/a/span[2]");
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember688\"]/div/div[1]/div/div/div[3]/p/span");
             SingeltonDriver.getDriverInstance().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
             InsertIDAndKeysToSendScreenShotOnFail("valPass", "Qwer1234");
-
+            //read values
             WebElement SentPass = SingeltonDriver.getDriverInstance().findElement(By.id("valPass"));
             String GetPass = SentPass.getAttribute("value");
+            //compare values
             Assert.assertEquals("Qwer1234", GetPass);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestAssertPass passed");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestAssertPass failed " + e.getMessage());
@@ -107,15 +121,19 @@ public class Report extends BasePage {
     @Test
     public void TestAssertConfPass()  {
         try {
+            //flow gets to insert password conf. field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember714\"]/div/ul[1]/li[3]/a/span[2]");
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember688\"]/div/div[1]/div/div/div[3]/p/span");
             SingeltonDriver.getDriverInstance().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
             InsertIDAndKeysToSendScreenShotOnFail("ember1225", "Qwer1234");
+            //read values
             WebElement SentPassConf = SingeltonDriver.getDriverInstance().findElement(By.id("ember1225"));
             String GetPassConf = SentPassConf.getAttribute("value");
+            //compare values
             Assert.assertEquals("Qwer1234", GetPassConf);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestAssertConfPass passed");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestAssertConfPass failed " + e.getMessage());
@@ -126,16 +144,20 @@ public class Report extends BasePage {
     @Test
     public void TestReceiverName()  {
         try {
+            //flow gets to insert Receivername field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             Login.RunLoginOldUser();
             GiftProperties.SetGiftProperties();
             PickBusiness.SetGiftAndPrice();
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember1642\"]/label[1]/span[2]");
             InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1648\"]", "Big Sister");
+            //read values
             WebElement SentReceiverName = SingeltonDriver.getDriverInstance().findElement(By.xpath("//*[@id=\"ember1648\"]"));
             String GetReceiverName = SentReceiverName.getAttribute("value");
+            //compare values
             Assert.assertEquals("Big Sister", GetReceiverName);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestReceiverName passed");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestReceiverName failed " + e.getMessage());
@@ -147,6 +169,7 @@ public class Report extends BasePage {
     @Test
     public void TestSenderName() {
         try {
+            //flow gets to insert Sendername field on registration screen
             StartAndNavigate.RunStartAndNavigate();
             Login.RunLoginOldUser();
             GiftProperties.SetGiftProperties();
@@ -154,10 +177,13 @@ public class Report extends BasePage {
             InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember1642\"]/label[1]/span[2]");
             SingeltonDriver.getDriverInstance().findElement(By.id("ember1650")).clear();
             InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1650\"]", "Lil Sister");
+            //compare values
             WebElement SentSenderName = SingeltonDriver.getDriverInstance().findElement(By.xpath("//*[@id=\"ember1650\"]"));
             String GetSenderName = SentSenderName.getAttribute("value");
+            //compare values
             Assert.assertEquals("Lil Sister", GetSenderName);
             SingeltonDriver.getDriverInstance().close();
+            //log statuses to report
             test.log(Status.PASS, "TestSenderName passed");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestSenderName failed" + e.getMessage());
@@ -165,6 +191,7 @@ public class Report extends BasePage {
         }
     }
     @AfterMethod
+    //take screenshot upon failure
     public void getResult(ITestResult result) throws Exception {
         if (result.getStatus() == ITestResult.FAILURE) {
             String screenShotPath = TakeScrShot("image");

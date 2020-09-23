@@ -6,6 +6,9 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 
+//commonly used functions trough the project
+//each function has a variation of taking a screenshot upon fail
+
 public class BasePage {
 
 
