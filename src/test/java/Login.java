@@ -8,7 +8,7 @@ public class Login extends BasePage {
         InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember688\"]/div/div[1]/div/div/div[3]/p/span");
         SingeltonDriver.getDriverInstance().manage().timeouts().implicitlyWait(7,TimeUnit.SECONDS);
         InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1218\"]", "Lera");
-        InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1220\"]", "lera.segal2+se56@gmail.com");
+        InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1220\"]", "lera.segal2+se58@gmail.com");
         InsertIDAndKeysToSendScreenShotOnFail("valPass", "Qwer1234");
         InsertXpathAndKeysToSendScreenShotOnFail("//*[@id=\"ember1225\"]","Qwer1234" );
         InsertXpathAndClickScreenShotOnFail("//*[@id=\"ember1217\"]/button");
