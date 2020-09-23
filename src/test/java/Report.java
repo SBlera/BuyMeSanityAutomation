@@ -1,6 +1,7 @@
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -9,6 +10,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 
 import java.util.concurrent.TimeUnit;
 
@@ -161,7 +164,15 @@ public class Report extends BasePage {
             System.out.println("TestSenderName failed" + e.getMessage());
         }
     }
+    @AfterMethod
+    public void getResult(ITestResult result) throws Exception {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenShotPath = TakeScrShot("image");
+            test.log(Status.FAIL, result.getThrowable());
+            test.log(Status.FAIL, (Markup) test.addScreenCaptureFromPath(screenShotPath));
 
+        }
+    }
 
         @AfterClass
         public static void afterClass(){
