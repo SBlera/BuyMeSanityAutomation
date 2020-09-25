@@ -4,7 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class SingeltonDriver {
     private static WebDriver driver;
 
-    //create singelton driver
+    //create Singelton driver
     public static WebDriver getDriverInstance()  {
         if(driver == null){
             var driverPath = ProjectPropertiesReader.GetInstance().GetDriverPath();

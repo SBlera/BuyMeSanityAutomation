@@ -1,3 +1,3 @@
 <?xml version = "1.0"?>
-<BuyMeProject Url="https://buyme.co.il/" DriverType="webdriver.chrome.driver" DriverPath="C:\Users\Lera\Desktop\תלושים\chromedriver.exe">
+<BuyMeProject Url="https://www.buyme.co.il/" DriverType="webdriver.chrome.driver" DriverPath="C:\Users\Lera\Desktop\תלושים\chromedriver.exe">
 </BuyMeProject>

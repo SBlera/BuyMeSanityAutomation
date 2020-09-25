@@ -5,6 +5,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
+import java.io.IOException;
 
 //commonly used functions trough the project
 //each function has a variation of taking a screenshot upon fail
@@ -115,6 +116,17 @@ public class BasePage {
         FileUtils.copyFile(SrcFile, DestinationFile);
         return Path;
 
+    }
+    public static String takeScreenShot(String ImagesPath) {
+        TakesScreenshot takesScreenshot = (TakesScreenshot) SingeltonDriver.getDriverInstance();
+        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File(ImagesPath + ".png");
+        try {
+            FileUtils.copyFile(screenShotFile, destinationFile);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return ImagesPath + ".png";
     }
 }
 
